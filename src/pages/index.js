@@ -1,12 +1,17 @@
+import { useState } from 'react';
 import Head from 'next/head';
-import Image from 'next/image';
 import { Inter } from '@next/font/google';
-import styles from '@/styles/Home.module.css';
+import Modal from '../components/Modal';
+import FormGroup from './../components/FormGroup';
+import FormTask from './../components/FormTask';
+import DeleteDialog from './../components/Dialog';
 
 const inter = Inter({ subsets: ['latin'] });
 
 export default function Home() {
   let progressPercentage = 90;
+
+  const [showModal, setShowModal] = useState(false);
 
   const ProgressBar = () => {
     return (
@@ -36,7 +41,10 @@ export default function Home() {
               <h1 className='text-lg font-semibold text-black'>
                 Product Roadmap
               </h1>
-              <button className='bg-[#01959F] flex items-center px-3 py-2 text-white text-sm font-medium rounded-lg'>
+              <button
+                className='bg-[#01959F] flex items-center px-3 py-2 text-white text-sm font-medium rounded-lg'
+                onClick={() => setShowModal(true)}
+              >
                 <span className='mr-1'>
                   <svg
                     xmlns='http://www.w3.org/2000/svg'
@@ -61,7 +69,7 @@ export default function Home() {
 
         <div className='flex-1 overflow-auto'>
           <main className='p-6 flex '>
-            <div className='p-3 w-80 bg-[#F3FBFC] border border-[#01959F] rounded-md flex-shrink-0'>
+            <div className='p-3 w-80 bg-[#F3FBFC] border border-[#01959F] rounded-sm flex-shrink-0'>
               <h3 className='text-xs font-normal text-[#01959F] border border-[#01959F] px-2 py-1 rounded w-fit'>
                 Group Task 1
               </h3>
@@ -70,7 +78,7 @@ export default function Home() {
               </h5>
               <ul className='mt-2'>
                 <li>
-                  <div className='p-4 bg-[#FAFAFA] border border-[#E0E0E0] rounded-md shadow'>
+                  <div className='p-4 bg-[#FAFAFA] border border-[#E0E0E0] rounded-sm shadow'>
                     <p className='text-sm font-bold text-[#404040] leading-6 border-b-2 border-dotted border-gray-200 pb-2'>
                       Re-designed the zero-g doggie bags. No more spills!
                     </p>
@@ -151,7 +159,7 @@ export default function Home() {
                 </li>
 
                 <li className='mt-3'>
-                  <div className='p-4 bg-[#FAFAFA] border border-[#E0E0E0] rounded-md shadow'>
+                  <div className='p-4 bg-[#FAFAFA] border border-[#E0E0E0] rounded-sm shadow'>
                     <p className='text-sm font-bold text-[#404040] leading-6 border-b-2 border-dotted border-gray-200 pb-2'>
                       Re-designed the zero-g doggie bags. No more spills!
                     </p>
@@ -232,7 +240,7 @@ export default function Home() {
                 </li>
 
                 <li className='mt-3'>
-                  <div className='p-4 bg-[#FAFAFA] border border-[#E0E0E0] rounded-md shadow'>
+                  <div className='p-4 bg-[#FAFAFA] border border-[#E0E0E0] rounded-sm shadow'>
                     <p className='text-sm font-bold text-[#404040] leading-6 border-b-2 border-dotted border-gray-200 pb-2'>
                       Re-designed the zero-g doggie bags. No more spills!
                     </p>
@@ -333,16 +341,16 @@ export default function Home() {
               </button>
             </div>
 
-            <div className='p-3 w-80 bg-[#F3FBFC] border border-[#01959F] rounded-md flex-shrink-0 ml-3'>
+            <div className='p-3 w-80 bg-[#F3FBFC] border border-[#01959F] rounded-sm flex-shrink-0 ml-3'>
               <h3 className='text-xs font-normal text-[#01959F] border border-[#01959F] px-2 py-1 rounded w-fit'>
-                Group Task 1
+                Group Task 2
               </h3>
               <h5 className='text-xs font-bold text-[#404040] my-2'>
                 January - March
               </h5>
               <ul className='mt-2'>
                 <li>
-                  <div className='p-4 bg-[#FAFAFA] border border-[#E0E0E0] rounded-md shadow'>
+                  <div className='p-4 bg-[#FAFAFA] border border-[#E0E0E0] rounded-sm shadow'>
                     <p className='text-sm font-bold text-[#404040] leading-6 border-b-2 border-dotted border-gray-200 pb-2'>
                       Re-designed the zero-g doggie bags. No more spills!
                     </p>
@@ -423,7 +431,7 @@ export default function Home() {
                 </li>
 
                 <li className='mt-3'>
-                  <div className='p-4 bg-[#FAFAFA] border border-[#E0E0E0] rounded-md shadow'>
+                  <div className='p-4 bg-[#FAFAFA] border border-[#E0E0E0] rounded-sm shadow'>
                     <p className='text-sm font-bold text-[#404040] leading-6 border-b-2 border-dotted border-gray-200 pb-2'>
                       Re-designed the zero-g doggie bags. No more spills!
                     </p>
@@ -504,7 +512,7 @@ export default function Home() {
                 </li>
 
                 <li className='mt-3'>
-                  <div className='p-4 bg-[#FAFAFA] border border-[#E0E0E0] rounded-md shadow'>
+                  <div className='p-4 bg-[#FAFAFA] border border-[#E0E0E0] rounded-sm shadow'>
                     <p className='text-sm font-bold text-[#404040] leading-6 border-b-2 border-dotted border-gray-200 pb-2'>
                       Re-designed the zero-g doggie bags. No more spills!
                     </p>
@@ -605,16 +613,16 @@ export default function Home() {
               </button>
             </div>
 
-            <div className='p-3 w-80 bg-[#F3FBFC] border border-[#01959F] rounded-md flex-shrink-0 ml-3'>
+            <div className='p-3 w-80 bg-[#F3FBFC] border border-[#01959F] rounded-sm flex-shrink-0 ml-3'>
               <h3 className='text-xs font-normal text-[#01959F] border border-[#01959F] px-2 py-1 rounded w-fit'>
-                Group Task 1
+                Group Task 3
               </h3>
               <h5 className='text-xs font-bold text-[#404040] my-2'>
                 January - March
               </h5>
               <ul className='mt-2'>
                 <li>
-                  <div className='p-4 bg-[#FAFAFA] border border-[#E0E0E0] rounded-md shadow'>
+                  <div className='p-4 bg-[#FAFAFA] border border-[#E0E0E0] rounded-sm shadow'>
                     <p className='text-sm font-bold text-[#404040] leading-6 border-b-2 border-dotted border-gray-200 pb-2'>
                       Re-designed the zero-g doggie bags. No more spills!
                     </p>
@@ -695,7 +703,7 @@ export default function Home() {
                 </li>
 
                 <li className='mt-3'>
-                  <div className='p-4 bg-[#FAFAFA] border border-[#E0E0E0] rounded-md shadow'>
+                  <div className='p-4 bg-[#FAFAFA] border border-[#E0E0E0] rounded-sm shadow'>
                     <p className='text-sm font-bold text-[#404040] leading-6 border-b-2 border-dotted border-gray-200 pb-2'>
                       Re-designed the zero-g doggie bags. No more spills!
                     </p>
@@ -776,7 +784,7 @@ export default function Home() {
                 </li>
 
                 <li className='mt-3'>
-                  <div className='p-4 bg-[#FAFAFA] border border-[#E0E0E0] rounded-md shadow'>
+                  <div className='p-4 bg-[#FAFAFA] border border-[#E0E0E0] rounded-sm shadow'>
                     <p className='text-sm font-bold text-[#404040] leading-6 border-b-2 border-dotted border-gray-200 pb-2'>
                       Re-designed the zero-g doggie bags. No more spills!
                     </p>
@@ -877,16 +885,16 @@ export default function Home() {
               </button>
             </div>
 
-            <div className='p-3 w-80 bg-[#F3FBFC] border border-[#01959F] rounded-md flex-shrink-0 ml-3'>
+            <div className='p-3 w-80 bg-[#F3FBFC] border border-[#01959F] rounded-sm flex-shrink-0 ml-3'>
               <h3 className='text-xs font-normal text-[#01959F] border border-[#01959F] px-2 py-1 rounded w-fit'>
-                Group Task 1
+                Group Task 4
               </h3>
               <h5 className='text-xs font-bold text-[#404040] my-2'>
                 January - March
               </h5>
               <ul className='mt-2'>
                 <li>
-                  <div className='p-4 bg-[#FAFAFA] border border-[#E0E0E0] rounded-md shadow'>
+                  <div className='p-4 bg-[#FAFAFA] border border-[#E0E0E0] rounded-sm shadow'>
                     <p className='text-sm font-bold text-[#404040] leading-6 border-b-2 border-dotted border-gray-200 pb-2'>
                       Re-designed the zero-g doggie bags. No more spills!
                     </p>
@@ -967,7 +975,7 @@ export default function Home() {
                 </li>
 
                 <li className='mt-3'>
-                  <div className='p-4 bg-[#FAFAFA] border border-[#E0E0E0] rounded-md shadow'>
+                  <div className='p-4 bg-[#FAFAFA] border border-[#E0E0E0] rounded-sm shadow'>
                     <p className='text-sm font-bold text-[#404040] leading-6 border-b-2 border-dotted border-gray-200 pb-2'>
                       Re-designed the zero-g doggie bags. No more spills!
                     </p>
@@ -1048,823 +1056,7 @@ export default function Home() {
                 </li>
 
                 <li className='mt-3'>
-                  <div className='p-4 bg-[#FAFAFA] border border-[#E0E0E0] rounded-md shadow'>
-                    <p className='text-sm font-bold text-[#404040] leading-6 border-b-2 border-dotted border-gray-200 pb-2'>
-                      Re-designed the zero-g doggie bags. No more spills!
-                    </p>
-                    <div className='mt-3 flex justify-between'>
-                      <div className='w-4/5 flex items-center'>
-                        <ProgressBar />
-                        <span className='ml-3 text-xs font-normal text-[#757575]'>
-                          {progressPercentage < 100 ? (
-                            `${progressPercentage}%`
-                          ) : (
-                            <svg
-                              width='16'
-                              height='16'
-                              viewBox='0 0 16 16'
-                              fill='none'
-                              xmlns='http://www.w3.org/2000/svg'
-                            >
-                              <g clip-path='url(#clip0_4_931)'>
-                                <path
-                                  d='M8 16C12.4183 16 16 12.4183 16 8C16 3.58172 12.4183 0 8 0C3.58172 0 0 3.58172 0 8C0 12.4183 3.58172 16 8 16Z'
-                                  fill='#43936C'
-                                />
-                                <path
-                                  d='M5.6001 7.89085L7.2001 9.49086L10.2911 6.3999'
-                                  stroke='white'
-                                  strokeWidth='2'
-                                  strokeLinecap='round'
-                                  strokeLinejoin='round'
-                                />
-                              </g>
-                              <defs>
-                                <clipPath id='clip0_4_931'>
-                                  <rect
-                                    width='16'
-                                    height='16'
-                                    fill='white'
-                                    transform='translate(0 16) rotate(-90)'
-                                  />
-                                </clipPath>
-                              </defs>
-                            </svg>
-                          )}
-                        </span>
-                      </div>
-                      <span className='cursor-pointer'>
-                        <svg
-                          width='24'
-                          height='24'
-                          viewBox='0 0 24 24'
-                          fill='none'
-                          xmlns='http://www.w3.org/2000/svg'
-                        >
-                          <path
-                            d='M19 13C19.5523 13 20 12.5523 20 12C20 11.4477 19.5523 11 19 11C18.4477 11 18 11.4477 18 12C18 12.5523 18.4477 13 19 13Z'
-                            stroke='#757575'
-                            strokeWidth='2'
-                            strokeLinecap='round'
-                            strokeLinejoin='round'
-                          />
-                          <path
-                            d='M12 13C12.5523 13 13 12.5523 13 12C13 11.4477 12.5523 11 12 11C11.4477 11 11 11.4477 11 12C11 12.5523 11.4477 13 12 13Z'
-                            stroke='#757575'
-                            strokeWidth='2'
-                            strokeLinecap='round'
-                            strokeLinejoin='round'
-                          />
-                          <path
-                            d='M5 13C5.55228 13 6 12.5523 6 12C6 11.4477 5.55228 11 5 11C4.44772 11 4 11.4477 4 12C4 12.5523 4.44772 13 5 13Z'
-                            stroke='#757575'
-                            strokeWidth='2'
-                            strokeLinecap='round'
-                            strokeLinejoin='round'
-                          />
-                        </svg>
-                      </span>
-                    </div>
-                  </div>
-                </li>
-              </ul>
-
-              <button className='flex items-center mt-2 leading-5 text-xs font-normal text-[#1D1F20]'>
-                <span className='mr-1.5'>
-                  <svg
-                    width='20'
-                    height='20'
-                    viewBox='0 0 20 20'
-                    fill='none'
-                    xmlns='http://www.w3.org/2000/svg'
-                  >
-                    <path
-                      d='M10.3334 9.16663V9.66663H10.8334H13.3334C13.4218 9.66663 13.5066 9.70175 13.5691 9.76426C13.6316 9.82677 13.6668 9.91155 13.6668 9.99996C13.6668 10.0884 13.6316 10.1732 13.5691 10.2357C13.5066 10.2982 13.4218 10.3333 13.3334 10.3333H10.8334H10.3334V10.8333V13.3333C10.3334 13.4217 10.2983 13.5065 10.2358 13.569C10.1733 13.6315 10.0885 13.6666 10.0001 13.6666C9.91168 13.6666 9.82689 13.6315 9.76438 13.569C9.70187 13.5065 9.66675 13.4217 9.66675 13.3333V10.8333V10.3333H9.16675H6.66675C6.57835 10.3333 6.49356 10.2982 6.43105 10.2357C6.36854 10.1732 6.33342 10.0884 6.33342 9.99996C6.33342 9.91155 6.36854 9.82677 6.43105 9.76426C6.49356 9.70175 6.57835 9.66663 6.66675 9.66663H9.16675H9.66675V9.16663V6.66663C9.66675 6.57822 9.70187 6.49344 9.76438 6.43092C9.8269 6.36841 9.91168 6.33329 10.0001 6.33329C10.0885 6.33329 10.1733 6.36841 10.2358 6.43092C10.2983 6.49344 10.3334 6.57822 10.3334 6.66663V9.16663ZM5.64812 3.48678C6.9363 2.62604 8.4508 2.16663 10.0001 2.16663C11.0288 2.16663 12.0474 2.36924 12.9978 2.7629C13.9482 3.15656 14.8117 3.73356 15.5391 4.46096C16.2665 5.18835 16.8435 6.05189 17.2371 7.00227C17.6308 7.95266 17.8334 8.97127 17.8334 9.99996C17.8334 11.5492 17.374 13.0637 16.5133 14.3519C15.6525 15.6401 14.4291 16.6441 12.9978 17.237C11.5664 17.8299 9.9914 17.985 8.47188 17.6828C6.95236 17.3805 5.55659 16.6345 4.46108 15.539C3.36557 14.4435 2.61952 13.0477 2.31727 11.5282C2.01502 10.0086 2.17014 8.43363 2.76303 7.00227C3.35592 5.57092 4.35993 4.34752 5.64812 3.48678ZM6.0185 15.9588C7.19705 16.7463 8.58265 17.1666 10.0001 17.1666C11.9008 17.1666 13.7237 16.4116 15.0677 15.0676C16.4117 13.7235 17.1668 11.9007 17.1668 9.99996C17.1668 8.58253 16.7464 7.19693 15.959 6.01837C15.1715 4.83982 14.0522 3.92125 12.7426 3.37882C11.4331 2.8364 9.99214 2.69447 8.60194 2.971C7.21174 3.24753 5.93476 3.93008 4.93249 4.93236C3.93021 5.93464 3.24765 7.21162 2.97112 8.60181C2.6946 9.99201 2.83652 11.433 3.37895 12.7425C3.92138 14.0521 4.83995 15.1713 6.0185 15.9588Z'
-                      fill='#333333'
-                      stroke='#333333'
-                    />
-                  </svg>
-                </span>{' '}
-                New Task
-              </button>
-            </div>
-
-            <div className='p-3 w-80 bg-[#F3FBFC] border border-[#01959F] rounded-md flex-shrink-0 ml-3'>
-              <h3 className='text-xs font-normal text-[#01959F] border border-[#01959F] px-2 py-1 rounded w-fit'>
-                Group Task 1
-              </h3>
-              <h5 className='text-xs font-bold text-[#404040] my-2'>
-                January - March
-              </h5>
-              <ul className='mt-2'>
-                <li>
-                  <div className='p-4 bg-[#FAFAFA] border border-[#E0E0E0] rounded-md shadow'>
-                    <p className='text-sm font-bold text-[#404040] leading-6 border-b-2 border-dotted border-gray-200 pb-2'>
-                      Re-designed the zero-g doggie bags. No more spills!
-                    </p>
-                    <div className='mt-3 flex justify-between'>
-                      <div className='w-4/5 flex items-center'>
-                        <ProgressBar />
-                        <span className='ml-3 text-xs font-normal text-[#757575]'>
-                          {progressPercentage < 100 ? (
-                            `${progressPercentage}%`
-                          ) : (
-                            <svg
-                              width='16'
-                              height='16'
-                              viewBox='0 0 16 16'
-                              fill='none'
-                              xmlns='http://www.w3.org/2000/svg'
-                            >
-                              <g clip-path='url(#clip0_4_931)'>
-                                <path
-                                  d='M8 16C12.4183 16 16 12.4183 16 8C16 3.58172 12.4183 0 8 0C3.58172 0 0 3.58172 0 8C0 12.4183 3.58172 16 8 16Z'
-                                  fill='#43936C'
-                                />
-                                <path
-                                  d='M5.6001 7.89085L7.2001 9.49086L10.2911 6.3999'
-                                  stroke='white'
-                                  strokeWidth='2'
-                                  strokeLinecap='round'
-                                  strokeLinejoin='round'
-                                />
-                              </g>
-                              <defs>
-                                <clipPath id='clip0_4_931'>
-                                  <rect
-                                    width='16'
-                                    height='16'
-                                    fill='white'
-                                    transform='translate(0 16) rotate(-90)'
-                                  />
-                                </clipPath>
-                              </defs>
-                            </svg>
-                          )}
-                        </span>
-                      </div>
-                      <span className='cursor-pointer'>
-                        <svg
-                          width='24'
-                          height='24'
-                          viewBox='0 0 24 24'
-                          fill='none'
-                          xmlns='http://www.w3.org/2000/svg'
-                        >
-                          <path
-                            d='M19 13C19.5523 13 20 12.5523 20 12C20 11.4477 19.5523 11 19 11C18.4477 11 18 11.4477 18 12C18 12.5523 18.4477 13 19 13Z'
-                            stroke='#757575'
-                            strokeWidth='2'
-                            strokeLinecap='round'
-                            strokeLinejoin='round'
-                          />
-                          <path
-                            d='M12 13C12.5523 13 13 12.5523 13 12C13 11.4477 12.5523 11 12 11C11.4477 11 11 11.4477 11 12C11 12.5523 11.4477 13 12 13Z'
-                            stroke='#757575'
-                            strokeWidth='2'
-                            strokeLinecap='round'
-                            strokeLinejoin='round'
-                          />
-                          <path
-                            d='M5 13C5.55228 13 6 12.5523 6 12C6 11.4477 5.55228 11 5 11C4.44772 11 4 11.4477 4 12C4 12.5523 4.44772 13 5 13Z'
-                            stroke='#757575'
-                            strokeWidth='2'
-                            strokeLinecap='round'
-                            strokeLinejoin='round'
-                          />
-                        </svg>
-                      </span>
-                    </div>
-                  </div>
-                </li>
-
-                <li className='mt-3'>
-                  <div className='p-4 bg-[#FAFAFA] border border-[#E0E0E0] rounded-md shadow'>
-                    <p className='text-sm font-bold text-[#404040] leading-6 border-b-2 border-dotted border-gray-200 pb-2'>
-                      Re-designed the zero-g doggie bags. No more spills!
-                    </p>
-                    <div className='mt-3 flex justify-between'>
-                      <div className='w-4/5 flex items-center'>
-                        <ProgressBar />
-                        <span className='ml-3 text-xs font-normal text-[#757575]'>
-                          {progressPercentage < 100 ? (
-                            `${progressPercentage}%`
-                          ) : (
-                            <svg
-                              width='16'
-                              height='16'
-                              viewBox='0 0 16 16'
-                              fill='none'
-                              xmlns='http://www.w3.org/2000/svg'
-                            >
-                              <g clip-path='url(#clip0_4_931)'>
-                                <path
-                                  d='M8 16C12.4183 16 16 12.4183 16 8C16 3.58172 12.4183 0 8 0C3.58172 0 0 3.58172 0 8C0 12.4183 3.58172 16 8 16Z'
-                                  fill='#43936C'
-                                />
-                                <path
-                                  d='M5.6001 7.89085L7.2001 9.49086L10.2911 6.3999'
-                                  stroke='white'
-                                  strokeWidth='2'
-                                  strokeLinecap='round'
-                                  strokeLinejoin='round'
-                                />
-                              </g>
-                              <defs>
-                                <clipPath id='clip0_4_931'>
-                                  <rect
-                                    width='16'
-                                    height='16'
-                                    fill='white'
-                                    transform='translate(0 16) rotate(-90)'
-                                  />
-                                </clipPath>
-                              </defs>
-                            </svg>
-                          )}
-                        </span>
-                      </div>
-                      <span className='cursor-pointer'>
-                        <svg
-                          width='24'
-                          height='24'
-                          viewBox='0 0 24 24'
-                          fill='none'
-                          xmlns='http://www.w3.org/2000/svg'
-                        >
-                          <path
-                            d='M19 13C19.5523 13 20 12.5523 20 12C20 11.4477 19.5523 11 19 11C18.4477 11 18 11.4477 18 12C18 12.5523 18.4477 13 19 13Z'
-                            stroke='#757575'
-                            strokeWidth='2'
-                            strokeLinecap='round'
-                            strokeLinejoin='round'
-                          />
-                          <path
-                            d='M12 13C12.5523 13 13 12.5523 13 12C13 11.4477 12.5523 11 12 11C11.4477 11 11 11.4477 11 12C11 12.5523 11.4477 13 12 13Z'
-                            stroke='#757575'
-                            strokeWidth='2'
-                            strokeLinecap='round'
-                            strokeLinejoin='round'
-                          />
-                          <path
-                            d='M5 13C5.55228 13 6 12.5523 6 12C6 11.4477 5.55228 11 5 11C4.44772 11 4 11.4477 4 12C4 12.5523 4.44772 13 5 13Z'
-                            stroke='#757575'
-                            strokeWidth='2'
-                            strokeLinecap='round'
-                            strokeLinejoin='round'
-                          />
-                        </svg>
-                      </span>
-                    </div>
-                  </div>
-                </li>
-
-                <li className='mt-3'>
-                  <div className='p-4 bg-[#FAFAFA] border border-[#E0E0E0] rounded-md shadow'>
-                    <p className='text-sm font-bold text-[#404040] leading-6 border-b-2 border-dotted border-gray-200 pb-2'>
-                      Re-designed the zero-g doggie bags. No more spills!
-                    </p>
-                    <div className='mt-3 flex justify-between'>
-                      <div className='w-4/5 flex items-center'>
-                        <ProgressBar />
-                        <span className='ml-3 text-xs font-normal text-[#757575]'>
-                          {progressPercentage < 100 ? (
-                            `${progressPercentage}%`
-                          ) : (
-                            <svg
-                              width='16'
-                              height='16'
-                              viewBox='0 0 16 16'
-                              fill='none'
-                              xmlns='http://www.w3.org/2000/svg'
-                            >
-                              <g clip-path='url(#clip0_4_931)'>
-                                <path
-                                  d='M8 16C12.4183 16 16 12.4183 16 8C16 3.58172 12.4183 0 8 0C3.58172 0 0 3.58172 0 8C0 12.4183 3.58172 16 8 16Z'
-                                  fill='#43936C'
-                                />
-                                <path
-                                  d='M5.6001 7.89085L7.2001 9.49086L10.2911 6.3999'
-                                  stroke='white'
-                                  strokeWidth='2'
-                                  strokeLinecap='round'
-                                  strokeLinejoin='round'
-                                />
-                              </g>
-                              <defs>
-                                <clipPath id='clip0_4_931'>
-                                  <rect
-                                    width='16'
-                                    height='16'
-                                    fill='white'
-                                    transform='translate(0 16) rotate(-90)'
-                                  />
-                                </clipPath>
-                              </defs>
-                            </svg>
-                          )}
-                        </span>
-                      </div>
-                      <span className='cursor-pointer'>
-                        <svg
-                          width='24'
-                          height='24'
-                          viewBox='0 0 24 24'
-                          fill='none'
-                          xmlns='http://www.w3.org/2000/svg'
-                        >
-                          <path
-                            d='M19 13C19.5523 13 20 12.5523 20 12C20 11.4477 19.5523 11 19 11C18.4477 11 18 11.4477 18 12C18 12.5523 18.4477 13 19 13Z'
-                            stroke='#757575'
-                            strokeWidth='2'
-                            strokeLinecap='round'
-                            strokeLinejoin='round'
-                          />
-                          <path
-                            d='M12 13C12.5523 13 13 12.5523 13 12C13 11.4477 12.5523 11 12 11C11.4477 11 11 11.4477 11 12C11 12.5523 11.4477 13 12 13Z'
-                            stroke='#757575'
-                            strokeWidth='2'
-                            strokeLinecap='round'
-                            strokeLinejoin='round'
-                          />
-                          <path
-                            d='M5 13C5.55228 13 6 12.5523 6 12C6 11.4477 5.55228 11 5 11C4.44772 11 4 11.4477 4 12C4 12.5523 4.44772 13 5 13Z'
-                            stroke='#757575'
-                            strokeWidth='2'
-                            strokeLinecap='round'
-                            strokeLinejoin='round'
-                          />
-                        </svg>
-                      </span>
-                    </div>
-                  </div>
-                </li>
-              </ul>
-
-              <button className='flex items-center mt-2 leading-5 text-xs font-normal text-[#1D1F20]'>
-                <span className='mr-1.5'>
-                  <svg
-                    width='20'
-                    height='20'
-                    viewBox='0 0 20 20'
-                    fill='none'
-                    xmlns='http://www.w3.org/2000/svg'
-                  >
-                    <path
-                      d='M10.3334 9.16663V9.66663H10.8334H13.3334C13.4218 9.66663 13.5066 9.70175 13.5691 9.76426C13.6316 9.82677 13.6668 9.91155 13.6668 9.99996C13.6668 10.0884 13.6316 10.1732 13.5691 10.2357C13.5066 10.2982 13.4218 10.3333 13.3334 10.3333H10.8334H10.3334V10.8333V13.3333C10.3334 13.4217 10.2983 13.5065 10.2358 13.569C10.1733 13.6315 10.0885 13.6666 10.0001 13.6666C9.91168 13.6666 9.82689 13.6315 9.76438 13.569C9.70187 13.5065 9.66675 13.4217 9.66675 13.3333V10.8333V10.3333H9.16675H6.66675C6.57835 10.3333 6.49356 10.2982 6.43105 10.2357C6.36854 10.1732 6.33342 10.0884 6.33342 9.99996C6.33342 9.91155 6.36854 9.82677 6.43105 9.76426C6.49356 9.70175 6.57835 9.66663 6.66675 9.66663H9.16675H9.66675V9.16663V6.66663C9.66675 6.57822 9.70187 6.49344 9.76438 6.43092C9.8269 6.36841 9.91168 6.33329 10.0001 6.33329C10.0885 6.33329 10.1733 6.36841 10.2358 6.43092C10.2983 6.49344 10.3334 6.57822 10.3334 6.66663V9.16663ZM5.64812 3.48678C6.9363 2.62604 8.4508 2.16663 10.0001 2.16663C11.0288 2.16663 12.0474 2.36924 12.9978 2.7629C13.9482 3.15656 14.8117 3.73356 15.5391 4.46096C16.2665 5.18835 16.8435 6.05189 17.2371 7.00227C17.6308 7.95266 17.8334 8.97127 17.8334 9.99996C17.8334 11.5492 17.374 13.0637 16.5133 14.3519C15.6525 15.6401 14.4291 16.6441 12.9978 17.237C11.5664 17.8299 9.9914 17.985 8.47188 17.6828C6.95236 17.3805 5.55659 16.6345 4.46108 15.539C3.36557 14.4435 2.61952 13.0477 2.31727 11.5282C2.01502 10.0086 2.17014 8.43363 2.76303 7.00227C3.35592 5.57092 4.35993 4.34752 5.64812 3.48678ZM6.0185 15.9588C7.19705 16.7463 8.58265 17.1666 10.0001 17.1666C11.9008 17.1666 13.7237 16.4116 15.0677 15.0676C16.4117 13.7235 17.1668 11.9007 17.1668 9.99996C17.1668 8.58253 16.7464 7.19693 15.959 6.01837C15.1715 4.83982 14.0522 3.92125 12.7426 3.37882C11.4331 2.8364 9.99214 2.69447 8.60194 2.971C7.21174 3.24753 5.93476 3.93008 4.93249 4.93236C3.93021 5.93464 3.24765 7.21162 2.97112 8.60181C2.6946 9.99201 2.83652 11.433 3.37895 12.7425C3.92138 14.0521 4.83995 15.1713 6.0185 15.9588Z'
-                      fill='#333333'
-                      stroke='#333333'
-                    />
-                  </svg>
-                </span>{' '}
-                New Task
-              </button>
-            </div>
-
-            <div className='p-3 w-80 bg-[#F3FBFC] border border-[#01959F] rounded-md flex-shrink-0 ml-3'>
-              <h3 className='text-xs font-normal text-[#01959F] border border-[#01959F] px-2 py-1 rounded w-fit'>
-                Group Task 1
-              </h3>
-              <h5 className='text-xs font-bold text-[#404040] my-2'>
-                January - March
-              </h5>
-              <ul className='mt-2'>
-                <li>
-                  <div className='p-4 bg-[#FAFAFA] border border-[#E0E0E0] rounded-md shadow'>
-                    <p className='text-sm font-bold text-[#404040] leading-6 border-b-2 border-dotted border-gray-200 pb-2'>
-                      Re-designed the zero-g doggie bags. No more spills!
-                    </p>
-                    <div className='mt-3 flex justify-between'>
-                      <div className='w-4/5 flex items-center'>
-                        <ProgressBar />
-                        <span className='ml-3 text-xs font-normal text-[#757575]'>
-                          {progressPercentage < 100 ? (
-                            `${progressPercentage}%`
-                          ) : (
-                            <svg
-                              width='16'
-                              height='16'
-                              viewBox='0 0 16 16'
-                              fill='none'
-                              xmlns='http://www.w3.org/2000/svg'
-                            >
-                              <g clip-path='url(#clip0_4_931)'>
-                                <path
-                                  d='M8 16C12.4183 16 16 12.4183 16 8C16 3.58172 12.4183 0 8 0C3.58172 0 0 3.58172 0 8C0 12.4183 3.58172 16 8 16Z'
-                                  fill='#43936C'
-                                />
-                                <path
-                                  d='M5.6001 7.89085L7.2001 9.49086L10.2911 6.3999'
-                                  stroke='white'
-                                  strokeWidth='2'
-                                  strokeLinecap='round'
-                                  strokeLinejoin='round'
-                                />
-                              </g>
-                              <defs>
-                                <clipPath id='clip0_4_931'>
-                                  <rect
-                                    width='16'
-                                    height='16'
-                                    fill='white'
-                                    transform='translate(0 16) rotate(-90)'
-                                  />
-                                </clipPath>
-                              </defs>
-                            </svg>
-                          )}
-                        </span>
-                      </div>
-                      <span className='cursor-pointer'>
-                        <svg
-                          width='24'
-                          height='24'
-                          viewBox='0 0 24 24'
-                          fill='none'
-                          xmlns='http://www.w3.org/2000/svg'
-                        >
-                          <path
-                            d='M19 13C19.5523 13 20 12.5523 20 12C20 11.4477 19.5523 11 19 11C18.4477 11 18 11.4477 18 12C18 12.5523 18.4477 13 19 13Z'
-                            stroke='#757575'
-                            strokeWidth='2'
-                            strokeLinecap='round'
-                            strokeLinejoin='round'
-                          />
-                          <path
-                            d='M12 13C12.5523 13 13 12.5523 13 12C13 11.4477 12.5523 11 12 11C11.4477 11 11 11.4477 11 12C11 12.5523 11.4477 13 12 13Z'
-                            stroke='#757575'
-                            strokeWidth='2'
-                            strokeLinecap='round'
-                            strokeLinejoin='round'
-                          />
-                          <path
-                            d='M5 13C5.55228 13 6 12.5523 6 12C6 11.4477 5.55228 11 5 11C4.44772 11 4 11.4477 4 12C4 12.5523 4.44772 13 5 13Z'
-                            stroke='#757575'
-                            strokeWidth='2'
-                            strokeLinecap='round'
-                            strokeLinejoin='round'
-                          />
-                        </svg>
-                      </span>
-                    </div>
-                  </div>
-                </li>
-
-                <li className='mt-3'>
-                  <div className='p-4 bg-[#FAFAFA] border border-[#E0E0E0] rounded-md shadow'>
-                    <p className='text-sm font-bold text-[#404040] leading-6 border-b-2 border-dotted border-gray-200 pb-2'>
-                      Re-designed the zero-g doggie bags. No more spills!
-                    </p>
-                    <div className='mt-3 flex justify-between'>
-                      <div className='w-4/5 flex items-center'>
-                        <ProgressBar />
-                        <span className='ml-3 text-xs font-normal text-[#757575]'>
-                          {progressPercentage < 100 ? (
-                            `${progressPercentage}%`
-                          ) : (
-                            <svg
-                              width='16'
-                              height='16'
-                              viewBox='0 0 16 16'
-                              fill='none'
-                              xmlns='http://www.w3.org/2000/svg'
-                            >
-                              <g clip-path='url(#clip0_4_931)'>
-                                <path
-                                  d='M8 16C12.4183 16 16 12.4183 16 8C16 3.58172 12.4183 0 8 0C3.58172 0 0 3.58172 0 8C0 12.4183 3.58172 16 8 16Z'
-                                  fill='#43936C'
-                                />
-                                <path
-                                  d='M5.6001 7.89085L7.2001 9.49086L10.2911 6.3999'
-                                  stroke='white'
-                                  strokeWidth='2'
-                                  strokeLinecap='round'
-                                  strokeLinejoin='round'
-                                />
-                              </g>
-                              <defs>
-                                <clipPath id='clip0_4_931'>
-                                  <rect
-                                    width='16'
-                                    height='16'
-                                    fill='white'
-                                    transform='translate(0 16) rotate(-90)'
-                                  />
-                                </clipPath>
-                              </defs>
-                            </svg>
-                          )}
-                        </span>
-                      </div>
-                      <span className='cursor-pointer'>
-                        <svg
-                          width='24'
-                          height='24'
-                          viewBox='0 0 24 24'
-                          fill='none'
-                          xmlns='http://www.w3.org/2000/svg'
-                        >
-                          <path
-                            d='M19 13C19.5523 13 20 12.5523 20 12C20 11.4477 19.5523 11 19 11C18.4477 11 18 11.4477 18 12C18 12.5523 18.4477 13 19 13Z'
-                            stroke='#757575'
-                            strokeWidth='2'
-                            strokeLinecap='round'
-                            strokeLinejoin='round'
-                          />
-                          <path
-                            d='M12 13C12.5523 13 13 12.5523 13 12C13 11.4477 12.5523 11 12 11C11.4477 11 11 11.4477 11 12C11 12.5523 11.4477 13 12 13Z'
-                            stroke='#757575'
-                            strokeWidth='2'
-                            strokeLinecap='round'
-                            strokeLinejoin='round'
-                          />
-                          <path
-                            d='M5 13C5.55228 13 6 12.5523 6 12C6 11.4477 5.55228 11 5 11C4.44772 11 4 11.4477 4 12C4 12.5523 4.44772 13 5 13Z'
-                            stroke='#757575'
-                            strokeWidth='2'
-                            strokeLinecap='round'
-                            strokeLinejoin='round'
-                          />
-                        </svg>
-                      </span>
-                    </div>
-                  </div>
-                </li>
-
-                <li className='mt-3'>
-                  <div className='p-4 bg-[#FAFAFA] border border-[#E0E0E0] rounded-md shadow'>
-                    <p className='text-sm font-bold text-[#404040] leading-6 border-b-2 border-dotted border-gray-200 pb-2'>
-                      Re-designed the zero-g doggie bags. No more spills!
-                    </p>
-                    <div className='mt-3 flex justify-between'>
-                      <div className='w-4/5 flex items-center'>
-                        <ProgressBar />
-                        <span className='ml-3 text-xs font-normal text-[#757575]'>
-                          {progressPercentage < 100 ? (
-                            `${progressPercentage}%`
-                          ) : (
-                            <svg
-                              width='16'
-                              height='16'
-                              viewBox='0 0 16 16'
-                              fill='none'
-                              xmlns='http://www.w3.org/2000/svg'
-                            >
-                              <g clip-path='url(#clip0_4_931)'>
-                                <path
-                                  d='M8 16C12.4183 16 16 12.4183 16 8C16 3.58172 12.4183 0 8 0C3.58172 0 0 3.58172 0 8C0 12.4183 3.58172 16 8 16Z'
-                                  fill='#43936C'
-                                />
-                                <path
-                                  d='M5.6001 7.89085L7.2001 9.49086L10.2911 6.3999'
-                                  stroke='white'
-                                  strokeWidth='2'
-                                  strokeLinecap='round'
-                                  strokeLinejoin='round'
-                                />
-                              </g>
-                              <defs>
-                                <clipPath id='clip0_4_931'>
-                                  <rect
-                                    width='16'
-                                    height='16'
-                                    fill='white'
-                                    transform='translate(0 16) rotate(-90)'
-                                  />
-                                </clipPath>
-                              </defs>
-                            </svg>
-                          )}
-                        </span>
-                      </div>
-                      <span className='cursor-pointer'>
-                        <svg
-                          width='24'
-                          height='24'
-                          viewBox='0 0 24 24'
-                          fill='none'
-                          xmlns='http://www.w3.org/2000/svg'
-                        >
-                          <path
-                            d='M19 13C19.5523 13 20 12.5523 20 12C20 11.4477 19.5523 11 19 11C18.4477 11 18 11.4477 18 12C18 12.5523 18.4477 13 19 13Z'
-                            stroke='#757575'
-                            strokeWidth='2'
-                            strokeLinecap='round'
-                            strokeLinejoin='round'
-                          />
-                          <path
-                            d='M12 13C12.5523 13 13 12.5523 13 12C13 11.4477 12.5523 11 12 11C11.4477 11 11 11.4477 11 12C11 12.5523 11.4477 13 12 13Z'
-                            stroke='#757575'
-                            strokeWidth='2'
-                            strokeLinecap='round'
-                            strokeLinejoin='round'
-                          />
-                          <path
-                            d='M5 13C5.55228 13 6 12.5523 6 12C6 11.4477 5.55228 11 5 11C4.44772 11 4 11.4477 4 12C4 12.5523 4.44772 13 5 13Z'
-                            stroke='#757575'
-                            strokeWidth='2'
-                            strokeLinecap='round'
-                            strokeLinejoin='round'
-                          />
-                        </svg>
-                      </span>
-                    </div>
-                  </div>
-                </li>
-              </ul>
-
-              <button className='flex items-center mt-2 leading-5 text-xs font-normal text-[#1D1F20]'>
-                <span className='mr-1.5'>
-                  <svg
-                    width='20'
-                    height='20'
-                    viewBox='0 0 20 20'
-                    fill='none'
-                    xmlns='http://www.w3.org/2000/svg'
-                  >
-                    <path
-                      d='M10.3334 9.16663V9.66663H10.8334H13.3334C13.4218 9.66663 13.5066 9.70175 13.5691 9.76426C13.6316 9.82677 13.6668 9.91155 13.6668 9.99996C13.6668 10.0884 13.6316 10.1732 13.5691 10.2357C13.5066 10.2982 13.4218 10.3333 13.3334 10.3333H10.8334H10.3334V10.8333V13.3333C10.3334 13.4217 10.2983 13.5065 10.2358 13.569C10.1733 13.6315 10.0885 13.6666 10.0001 13.6666C9.91168 13.6666 9.82689 13.6315 9.76438 13.569C9.70187 13.5065 9.66675 13.4217 9.66675 13.3333V10.8333V10.3333H9.16675H6.66675C6.57835 10.3333 6.49356 10.2982 6.43105 10.2357C6.36854 10.1732 6.33342 10.0884 6.33342 9.99996C6.33342 9.91155 6.36854 9.82677 6.43105 9.76426C6.49356 9.70175 6.57835 9.66663 6.66675 9.66663H9.16675H9.66675V9.16663V6.66663C9.66675 6.57822 9.70187 6.49344 9.76438 6.43092C9.8269 6.36841 9.91168 6.33329 10.0001 6.33329C10.0885 6.33329 10.1733 6.36841 10.2358 6.43092C10.2983 6.49344 10.3334 6.57822 10.3334 6.66663V9.16663ZM5.64812 3.48678C6.9363 2.62604 8.4508 2.16663 10.0001 2.16663C11.0288 2.16663 12.0474 2.36924 12.9978 2.7629C13.9482 3.15656 14.8117 3.73356 15.5391 4.46096C16.2665 5.18835 16.8435 6.05189 17.2371 7.00227C17.6308 7.95266 17.8334 8.97127 17.8334 9.99996C17.8334 11.5492 17.374 13.0637 16.5133 14.3519C15.6525 15.6401 14.4291 16.6441 12.9978 17.237C11.5664 17.8299 9.9914 17.985 8.47188 17.6828C6.95236 17.3805 5.55659 16.6345 4.46108 15.539C3.36557 14.4435 2.61952 13.0477 2.31727 11.5282C2.01502 10.0086 2.17014 8.43363 2.76303 7.00227C3.35592 5.57092 4.35993 4.34752 5.64812 3.48678ZM6.0185 15.9588C7.19705 16.7463 8.58265 17.1666 10.0001 17.1666C11.9008 17.1666 13.7237 16.4116 15.0677 15.0676C16.4117 13.7235 17.1668 11.9007 17.1668 9.99996C17.1668 8.58253 16.7464 7.19693 15.959 6.01837C15.1715 4.83982 14.0522 3.92125 12.7426 3.37882C11.4331 2.8364 9.99214 2.69447 8.60194 2.971C7.21174 3.24753 5.93476 3.93008 4.93249 4.93236C3.93021 5.93464 3.24765 7.21162 2.97112 8.60181C2.6946 9.99201 2.83652 11.433 3.37895 12.7425C3.92138 14.0521 4.83995 15.1713 6.0185 15.9588Z'
-                      fill='#333333'
-                      stroke='#333333'
-                    />
-                  </svg>
-                </span>{' '}
-                New Task
-              </button>
-            </div>
-
-            <div className='p-3 w-80 bg-[#F3FBFC] border border-[#01959F] rounded-md flex-shrink-0 ml-3'>
-              <h3 className='text-xs font-normal text-[#01959F] border border-[#01959F] px-2 py-1 rounded w-fit'>
-                Group Task 1
-              </h3>
-              <h5 className='text-xs font-bold text-[#404040] my-2'>
-                January - March
-              </h5>
-              <ul className='mt-2'>
-                <li>
-                  <div className='p-4 bg-[#FAFAFA] border border-[#E0E0E0] rounded-md shadow'>
-                    <p className='text-sm font-bold text-[#404040] leading-6 border-b-2 border-dotted border-gray-200 pb-2'>
-                      Re-designed the zero-g doggie bags. No more spills!
-                    </p>
-                    <div className='mt-3 flex justify-between'>
-                      <div className='w-4/5 flex items-center'>
-                        <ProgressBar />
-                        <span className='ml-3 text-xs font-normal text-[#757575]'>
-                          {progressPercentage < 100 ? (
-                            `${progressPercentage}%`
-                          ) : (
-                            <svg
-                              width='16'
-                              height='16'
-                              viewBox='0 0 16 16'
-                              fill='none'
-                              xmlns='http://www.w3.org/2000/svg'
-                            >
-                              <g clip-path='url(#clip0_4_931)'>
-                                <path
-                                  d='M8 16C12.4183 16 16 12.4183 16 8C16 3.58172 12.4183 0 8 0C3.58172 0 0 3.58172 0 8C0 12.4183 3.58172 16 8 16Z'
-                                  fill='#43936C'
-                                />
-                                <path
-                                  d='M5.6001 7.89085L7.2001 9.49086L10.2911 6.3999'
-                                  stroke='white'
-                                  strokeWidth='2'
-                                  strokeLinecap='round'
-                                  strokeLinejoin='round'
-                                />
-                              </g>
-                              <defs>
-                                <clipPath id='clip0_4_931'>
-                                  <rect
-                                    width='16'
-                                    height='16'
-                                    fill='white'
-                                    transform='translate(0 16) rotate(-90)'
-                                  />
-                                </clipPath>
-                              </defs>
-                            </svg>
-                          )}
-                        </span>
-                      </div>
-                      <span className='cursor-pointer'>
-                        <svg
-                          width='24'
-                          height='24'
-                          viewBox='0 0 24 24'
-                          fill='none'
-                          xmlns='http://www.w3.org/2000/svg'
-                        >
-                          <path
-                            d='M19 13C19.5523 13 20 12.5523 20 12C20 11.4477 19.5523 11 19 11C18.4477 11 18 11.4477 18 12C18 12.5523 18.4477 13 19 13Z'
-                            stroke='#757575'
-                            strokeWidth='2'
-                            strokeLinecap='round'
-                            strokeLinejoin='round'
-                          />
-                          <path
-                            d='M12 13C12.5523 13 13 12.5523 13 12C13 11.4477 12.5523 11 12 11C11.4477 11 11 11.4477 11 12C11 12.5523 11.4477 13 12 13Z'
-                            stroke='#757575'
-                            strokeWidth='2'
-                            strokeLinecap='round'
-                            strokeLinejoin='round'
-                          />
-                          <path
-                            d='M5 13C5.55228 13 6 12.5523 6 12C6 11.4477 5.55228 11 5 11C4.44772 11 4 11.4477 4 12C4 12.5523 4.44772 13 5 13Z'
-                            stroke='#757575'
-                            strokeWidth='2'
-                            strokeLinecap='round'
-                            strokeLinejoin='round'
-                          />
-                        </svg>
-                      </span>
-                    </div>
-                  </div>
-                </li>
-
-                <li className='mt-3'>
-                  <div className='p-4 bg-[#FAFAFA] border border-[#E0E0E0] rounded-md shadow'>
-                    <p className='text-sm font-bold text-[#404040] leading-6 border-b-2 border-dotted border-gray-200 pb-2'>
-                      Re-designed the zero-g doggie bags. No more spills!
-                    </p>
-                    <div className='mt-3 flex justify-between'>
-                      <div className='w-4/5 flex items-center'>
-                        <ProgressBar />
-                        <span className='ml-3 text-xs font-normal text-[#757575]'>
-                          {progressPercentage < 100 ? (
-                            `${progressPercentage}%`
-                          ) : (
-                            <svg
-                              width='16'
-                              height='16'
-                              viewBox='0 0 16 16'
-                              fill='none'
-                              xmlns='http://www.w3.org/2000/svg'
-                            >
-                              <g clip-path='url(#clip0_4_931)'>
-                                <path
-                                  d='M8 16C12.4183 16 16 12.4183 16 8C16 3.58172 12.4183 0 8 0C3.58172 0 0 3.58172 0 8C0 12.4183 3.58172 16 8 16Z'
-                                  fill='#43936C'
-                                />
-                                <path
-                                  d='M5.6001 7.89085L7.2001 9.49086L10.2911 6.3999'
-                                  stroke='white'
-                                  strokeWidth='2'
-                                  strokeLinecap='round'
-                                  strokeLinejoin='round'
-                                />
-                              </g>
-                              <defs>
-                                <clipPath id='clip0_4_931'>
-                                  <rect
-                                    width='16'
-                                    height='16'
-                                    fill='white'
-                                    transform='translate(0 16) rotate(-90)'
-                                  />
-                                </clipPath>
-                              </defs>
-                            </svg>
-                          )}
-                        </span>
-                      </div>
-                      <span className='cursor-pointer'>
-                        <svg
-                          width='24'
-                          height='24'
-                          viewBox='0 0 24 24'
-                          fill='none'
-                          xmlns='http://www.w3.org/2000/svg'
-                        >
-                          <path
-                            d='M19 13C19.5523 13 20 12.5523 20 12C20 11.4477 19.5523 11 19 11C18.4477 11 18 11.4477 18 12C18 12.5523 18.4477 13 19 13Z'
-                            stroke='#757575'
-                            strokeWidth='2'
-                            strokeLinecap='round'
-                            strokeLinejoin='round'
-                          />
-                          <path
-                            d='M12 13C12.5523 13 13 12.5523 13 12C13 11.4477 12.5523 11 12 11C11.4477 11 11 11.4477 11 12C11 12.5523 11.4477 13 12 13Z'
-                            stroke='#757575'
-                            strokeWidth='2'
-                            strokeLinecap='round'
-                            strokeLinejoin='round'
-                          />
-                          <path
-                            d='M5 13C5.55228 13 6 12.5523 6 12C6 11.4477 5.55228 11 5 11C4.44772 11 4 11.4477 4 12C4 12.5523 4.44772 13 5 13Z'
-                            stroke='#757575'
-                            strokeWidth='2'
-                            strokeLinecap='round'
-                            strokeLinejoin='round'
-                          />
-                        </svg>
-                      </span>
-                    </div>
-                  </div>
-                </li>
-
-                <li className='mt-3'>
-                  <div className='p-4 bg-[#FAFAFA] border border-[#E0E0E0] rounded-md shadow'>
+                  <div className='p-4 bg-[#FAFAFA] border border-[#E0E0E0] rounded-sm shadow'>
                     <p className='text-sm font-bold text-[#404040] leading-6 border-b-2 border-dotted border-gray-200 pb-2'>
                       Re-designed the zero-g doggie bags. No more spills!
                     </p>
@@ -1967,6 +1159,16 @@ export default function Home() {
           </main>
         </div>
       </div>
+      <Modal isVisible={showModal}>
+        {/* <FormGroup onClose={() => setShowModal(false)} /> */}
+        {/* <FormTask
+          Title={'Create Task'}
+          isEdit={false}
+          onClose={() => setShowModal(false)}
+        /> */}
+
+        <DeleteDialog onClose={() => setShowModal(false)} />
+      </Modal>
     </>
   );
 }

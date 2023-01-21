@@ -49,23 +49,29 @@ export default function GroupCard({
     getTodoItem();
   }, []);
 
-  let changeColor;
+  let boardGroupColor, titleGroupColor;
 
   if ((index + 1) % 4 === 0) {
-    changeColor = 'bg-[#F8FBF9] border border-[#B8DBCA]';
+    boardGroupColor = 'bg-[#F8FBF9] border border-[#B8DBCA]';
+    titleGroupColor = 'text-[#43936C] border border-[#B8DBCA]';
   } else if ((index + 1) % 2 === 0) {
-    changeColor = 'bg-[#FFFCF5] border border-[#FEEABC]';
+    boardGroupColor = 'bg-[#FFFCF5] border border-[#FEEABC]';
+    titleGroupColor = 'text-[#FA9810] border border-[#FEEABC]';
   } else if ((index + 1) % 3 === 0) {
-    changeColor = 'bg-[#FFFAFA] border border-[#F5B1B7]';
+    boardGroupColor = 'bg-[#FFFAFA] border border-[#F5B1B7]';
+    titleGroupColor = 'text-[#E11428] border border-[#F5B1B7]';
   } else {
-    changeColor = 'bg-[#F7FEFF] border border-[#01959F]';
+    boardGroupColor = 'bg-[#F7FEFF] border border-[#01959F]';
+    titleGroupColor = 'text-[#01959F] border border-[#01959F]';
   }
 
   return (
     <div
-      className={`w-80 h-fit ${changeColor} rounded-md flex-shrink-0 p-3 mr-4`}
+      className={`w-80 h-fit ${boardGroupColor} rounded-md flex-shrink-0 p-3 mr-4`}
     >
-      <h3 className='text-xs font-normal text-[#01959F] border border-[#01959F] px-2 py-1 rounded w-fit'>
+      <h3
+        className={`text-xs font-normal ${titleGroupColor} px-2 py-1 rounded w-fit`}
+      >
         {todo.title}
       </h3>
       <h5 className='text-xs font-bold text-[#404040] my-2'>

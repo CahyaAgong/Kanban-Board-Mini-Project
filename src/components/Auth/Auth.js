@@ -24,7 +24,7 @@ export default function Auth({ authToken, setAuthToken, onClose }) {
         window.localStorage.setItem('token', auth_token);
         setAuthToken(auth_token);
 
-        alert(`${response.status} Success SignIn!`);
+        alert(`Success SignIn!`);
         router.reload(window.location.pathname);
       })
       .catch(err => {
@@ -49,7 +49,7 @@ export default function Auth({ authToken, setAuthToken, onClose }) {
         window.localStorage.setItem('token', auth_token);
         setAuthToken(auth_token);
 
-        alert(`${res.status} ${res.data.message}`);
+        alert(`${res.data.message}`);
         router.reload(window.location.pathname);
       })
       .catch(err => {

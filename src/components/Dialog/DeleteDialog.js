@@ -1,4 +1,4 @@
-export default function DeleteDialog({ onClose }) {
+export default function DeleteDialog({ onClose, onDelete }) {
   return (
     <div className='flex flex-col p-6'>
       <div className='flex justify-between'>
@@ -14,9 +14,9 @@ export default function DeleteDialog({ onClose }) {
               <path
                 d='M12 9V11M12 15H12.01M5.07183 19H18.9282C20.4678 19 21.4301 17.3333 20.6603 16L13.7321 4C12.9623 2.66667 11.0378 2.66667 10.268 4L3.33978 16C2.56998 17.3333 3.53223 19 5.07183 19Z'
                 stroke='#E11428'
-                stroke-width='2'
-                stroke-linecap='round'
-                stroke-linejoin='round'
+                strokeWidth='2'
+                strokeLinecap='round'
+                strokeLinejoin='round'
               />
             </svg>
           </span>
@@ -34,16 +34,16 @@ export default function DeleteDialog({ onClose }) {
             <path
               d='M18 6L6 18'
               stroke='#404040'
-              stroke-width='2'
-              stroke-linecap='round'
-              stroke-linejoin='round'
+              strokeWidth='2'
+              strokeLinecap='round'
+              strokeLinejoin='round'
             />
             <path
               d='M6 6L18 18'
               stroke='#404040'
-              stroke-width='2'
-              stroke-linecap='round'
-              stroke-linejoin='round'
+              strokeWidth='2'
+              strokeLinecap='round'
+              strokeLinejoin='round'
             />
           </svg>
         </span>
@@ -60,7 +60,10 @@ export default function DeleteDialog({ onClose }) {
         >
           Cancel
         </button>
-        <button className='text-sm font-bold text-white px-4 py-2 bg-[#E11428] rounded-lg'>
+        <button
+          className='text-sm font-bold text-white px-4 py-2 bg-[#E11428] rounded-lg'
+          onClick={() => onDelete()}
+        >
           Delete
         </button>
       </div>

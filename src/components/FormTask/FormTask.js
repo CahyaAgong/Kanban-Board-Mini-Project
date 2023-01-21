@@ -23,9 +23,7 @@ export default function FormTask({ taskItem, isEdit, onClose, authToken }) {
         setName(res.data.name);
         setPercentageProgress(res.data.progress_percentage);
       })
-      .catch(err => {
-        console.log(err);
-      });
+      .catch(err => {});
   };
 
   useEffect(() => {
@@ -53,7 +51,6 @@ export default function FormTask({ taskItem, isEdit, onClose, authToken }) {
           router.reload(window.location.pathname);
         })
         .catch(err => {
-          console.log(err);
           alert('error post todo!');
         });
 
@@ -81,7 +78,6 @@ export default function FormTask({ taskItem, isEdit, onClose, authToken }) {
         router.reload(window.location.pathname);
       })
       .catch(err => {
-        console.log(err);
         alert('error post todo!');
       });
   };

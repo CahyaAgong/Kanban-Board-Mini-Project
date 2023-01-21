@@ -40,7 +40,7 @@ export default function Home() {
             setTodoList(res.data);
           })
           .catch(err => {
-            console.log(err);
+            alert('error occured! ', err);
           });
       }
 

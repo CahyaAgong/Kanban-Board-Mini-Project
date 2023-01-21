@@ -17,12 +17,10 @@ export default function FormGroup({ onClose, Auth }) {
         },
       })
       .then(res => {
-        console.log(res);
         alert('post todo success!');
         router.reload(window.location.pathname);
       })
       .catch(err => {
-        console.log(err);
         alert('error post todo!');
       });
   };

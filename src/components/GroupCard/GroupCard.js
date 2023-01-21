@@ -42,9 +42,7 @@ export default function GroupCard({
       .then(res => {
         sortData(res.data, 'descending');
       })
-      .catch(err => {
-        console.log(err);
-      });
+      .catch(err => {});
   }
 
   useEffect(() => {

@@ -19,8 +19,6 @@ export default function Auth({ authToken, setAuthToken, onClose }) {
     await axios
       .post(`${config.services.baseUrl}/auth/login`, body)
       .then(response => {
-        // console.log(response);
-
         let auth_token = response.data.auth_token;
 
         window.localStorage.setItem('token', auth_token);
@@ -30,7 +28,6 @@ export default function Auth({ authToken, setAuthToken, onClose }) {
         router.reload(window.location.pathname);
       })
       .catch(err => {
-        // console.log(err.response);
         alert('error occured!', err);
       });
   };
@@ -56,7 +53,6 @@ export default function Auth({ authToken, setAuthToken, onClose }) {
         router.reload(window.location.pathname);
       })
       .catch(err => {
-        console.log(err.response);
         alert('error occured!', err);
       });
   };

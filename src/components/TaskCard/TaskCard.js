@@ -23,12 +23,11 @@ export default function TaskCard({ taskItem, authToken, index, totalGroup }) {
         }
       )
       .then(res => {
-        console.log(res);
         setShowModal('');
         router.reload(window.location.pathname);
       })
       .catch(err => {
-        console.log(err);
+        alert('error occured! ', err);
       });
   };
 
@@ -63,8 +62,7 @@ export default function TaskCard({ taskItem, authToken, index, totalGroup }) {
         router.reload(window.location.pathname);
       })
       .catch(err => {
-        console.log(err);
-        alert('error post todo!');
+        alert('error post todo!', err);
       });
   };
 

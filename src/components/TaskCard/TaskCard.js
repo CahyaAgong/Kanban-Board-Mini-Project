@@ -7,7 +7,7 @@ import FormTask from '../FormTask/FormTask';
 import axios from 'axios';
 import config from './../../config.js';
 
-export default function TaskCard({ taskItem, authToken, index, totalGroup }) {
+export default function TaskCard({ taskItem, authToken, index, todoList }) {
   const router = useRouter();
   const [showSetting, setShowSetting] = useState(false);
   const [showModal, setShowModal] = useState('');
@@ -33,13 +33,14 @@ export default function TaskCard({ taskItem, authToken, index, totalGroup }) {
 
   const moveTask = async direction => {
     let body;
+
     if (direction === 'left') {
       body = {
-        target_todo_id: taskItem.todo_id - 1,
+        target_todo_id: todoList[index - 1].id,
       };
     } else {
       body = {
-        target_todo_id: taskItem.todo_id + 1,
+        target_todo_id: todoList[index + 1].id,
       };
     }
 
@@ -74,7 +75,7 @@ export default function TaskCard({ taskItem, authToken, index, totalGroup }) {
       }
       moveTask(direction);
     } else {
-      if (index + 1 > totalGroup - 1) {
+      if (index + 1 > todoList.length - 1) {
         alert('This task cant move to right!');
         return;
       }

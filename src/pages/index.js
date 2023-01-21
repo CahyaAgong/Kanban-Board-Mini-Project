@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
+import Image from 'next/image.js';
 
 import Head from 'next/head';
 import { Inter } from '@next/font/google';
@@ -11,10 +12,13 @@ import Auth from './../components/Auth';
 import config from './../config.js';
 import axios from 'axios';
 
+import backgroundMain from './../assets/img/bg-main.png';
+
 const inter = Inter({ subsets: ['latin'] });
 
 export default function Home() {
   const router = useRouter();
+
   const [showModalCreateGroup, setShowModalCreateGroup] = useState(false);
   const [showAuth, setShowAuth] = useState(false);
   const [showModalCreateTask, setShowModalCreateTask] = useState('');
@@ -67,64 +71,39 @@ export default function Home() {
       <div className='h-screen flex flex-col font-NunitoSans'>
         <div className='flex-shrink-0 min-w-0 bg-white'>
           <div className='border-b-2 border-gray-200'>
-            <header className='flex items-center space-x-5 p-6'>
-              <h1 className='text-lg font-semibold text-black'>
-                Product Roadmap
-              </h1>
+            <header className='flex items-center justify-between space-x-5 p-6'>
+              <div className='flex items-center'>
+                <h1 className='text-lg font-semibold text-black mr-2.5'>
+                  Product Roadmap
+                </h1>
 
-              <button
-                className='bg-[#01959F] flex items-center px-3 py-2 text-white text-sm font-medium rounded-lg'
-                onClick={() =>
-                  auth !== 'null'
-                    ? setShowModalCreateGroup(true)
-                    : alert('you should login first to access!')
-                }
-              >
-                <span className='mr-1'>
-                  <svg
-                    xmlns='http://www.w3.org/2000/svg'
-                    fill='none'
-                    viewBox='0 0 24 24'
-                    strokeWidth='1.5'
-                    stroke='currentColor'
-                    className='w-6 h-6'
-                  >
-                    <path
-                      strokeLinecap='round'
-                      strokeLinejoin='round'
-                      d='M12 6v12m6-6H6'
-                    />
-                  </svg>
-                </span>
-                Add New Group
-              </button>
-
-              <button
-                className={
-                  auth === 'null'
-                    ? 'bg-[#01959F] flex items-center px-3 py-2 text-white text-sm font-medium rounded-lg'
-                    : 'hidden'
-                }
-                onClick={() => setShowAuth(true)}
-              >
-                <span className='mr-1'>
-                  <svg
-                    xmlns='http://www.w3.org/2000/svg'
-                    fill='none'
-                    viewBox='0 0 24 24'
-                    strokeWidth='1.5'
-                    stroke='currentColor'
-                    className='w-6 h-6'
-                  >
-                    <path
-                      strokeLinecap='round'
-                      strokeLinejoin='round'
-                      d='M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z'
-                    />
-                  </svg>
-                </span>
-                Signin & Signup
-              </button>
+                <button
+                  className='bg-[#01959F] flex items-center px-3 py-1 text-white text-sm font-medium rounded-lg'
+                  onClick={() =>
+                    auth !== 'null'
+                      ? setShowModalCreateGroup(true)
+                      : alert('you should login first to access!')
+                  }
+                >
+                  <span className='mr-1'>
+                    <svg
+                      xmlns='http://www.w3.org/2000/svg'
+                      fill='none'
+                      viewBox='0 0 24 24'
+                      strokeWidth='1.5'
+                      stroke='currentColor'
+                      className='w-6 h-6'
+                    >
+                      <path
+                        strokeLinecap='round'
+                        strokeLinejoin='round'
+                        d='M12 6v12m6-6H6'
+                      />
+                    </svg>
+                  </span>
+                  Add New Group
+                </button>
+              </div>
 
               <button
                 className={
@@ -167,11 +146,46 @@ export default function Home() {
                   setShowModal={setShowModalCreateTask}
                   authToken={auth}
                   index={idx}
-                  todoListTotal={todoList.length}
+                  todoList={todoList}
                 />
               ))
             ) : (
-              <div className='flex w-full h-32 bg-gray-300'>No Data!</div>
+              <div className='flex flex-col w-full h-fit bg-white rounded-md text-4xl font-semibold text-[#01959F] justify-center items-center mt-10'>
+                <Image
+                  src={backgroundMain}
+                  width={500}
+                  height={500}
+                  alt='background-main'
+                />
+                <h1>Please Signin to use Kanban Board!</h1>
+
+                <button
+                  className={
+                    auth === 'null'
+                      ? 'bg-[#01959F] flex items-center px-5 py-2 text-white text-sm font-semibold rounded-lg mt-5'
+                      : 'hidden'
+                  }
+                  onClick={() => setShowAuth(true)}
+                >
+                  <span className='mr-1'>
+                    <svg
+                      xmlns='http://www.w3.org/2000/svg'
+                      fill='none'
+                      viewBox='0 0 24 24'
+                      strokeWidth='1.5'
+                      stroke='currentColor'
+                      className='w-6 h-6'
+                    >
+                      <path
+                        strokeLinecap='round'
+                        strokeLinejoin='round'
+                        d='M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z'
+                      />
+                    </svg>
+                  </span>
+                  Signin
+                </button>
+              </div>
             )}
           </main>
         </div>

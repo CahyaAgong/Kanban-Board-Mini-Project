@@ -1,7 +1,10 @@
+import { useRouter } from 'next/router';
 import axios from 'axios';
 import config from './../../config';
 
 export default function FormGroup({ onClose, Auth }) {
+  const router = useRouter();
+
   const handleSubmit = e => {
     e.preventDefault();
 
@@ -21,7 +24,7 @@ export default function FormGroup({ onClose, Auth }) {
         router.reload(window.location.pathname);
       })
       .catch(err => {
-        alert('error post todo!');
+        alert('error post todo!', err);
       });
   };
 

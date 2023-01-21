@@ -12,7 +12,7 @@ export default function GroupCard({
   setShowModal,
   authToken,
   index,
-  todoListTotal,
+  todoList,
 }) {
   const [todoItem, setTodoItem] = useState([]);
 
@@ -79,7 +79,7 @@ export default function GroupCard({
                 taskItem={item}
                 authToken={authToken}
                 index={index}
-                totalGroup={todoListTotal}
+                todoList={todoList}
               />
             </li>
           ))

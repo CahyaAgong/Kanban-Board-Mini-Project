@@ -24,7 +24,7 @@ export default function Auth({ authToken, setAuthToken, onClose }) {
         window.localStorage.setItem('token', auth_token);
         setAuthToken(auth_token);
 
-        alert(`Success SignIn!`);
+        alert(`Success Signin!`);
         router.reload(window.location.pathname);
       })
       .catch(err => {
